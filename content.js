@@ -22,8 +22,8 @@ const operationrow8 = document.getElementById('operationrow8');
 const operationrow9 = document.getElementById('operationrow9');
 const operationrow10 = document.getElementById('operationrow10');
 
-const operationTable = document.getElementById('operationheader');
-const compTable = document.getElementById('componentheader');
+const operationTable = document.getElementById('operation_splits');
+const compTable = document.getElementById('component_splits');
 const rows = compTable.getElementsByTagName('tr');
 const opRows = operationTable.getElementsByTagName('tr');
 
@@ -47,5 +47,7 @@ for (let i = 1; i < rows.length; i++) {
     const cells = currentRow.getElementsByTagName('td');
 
     const thirdColumnValue = cells[2].innerText;
-    cells[3].innerText = thirdColumnValue * qty.innerHTML;
+    const fourthColumnField = document.getElementById('quantity' + i);
+    //cells[3].innerText = thirdColumnValue * qty.innerHTML;
+    fourthColumnField.value = thirdColumnValue * qty.innerHTML;
 }
