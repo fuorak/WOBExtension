@@ -5,6 +5,10 @@ const qtyInput = document.getElementById('quantity_formattedValue');
 const completedQty = document.getElementById('completedquantity_formattedValue');
 const startingOperation = document.getElementById('inpt_startoperation1');
 const endingOperation = document.getElementById('inpt_endoperation2');
+const startingOperationIndex = document.getElementById('indx_startoperation1');
+const endingOperationIndex = document.getElementById('indx_endoperation2');
+const startingOperationHidden = document.getElementById('hddn_startoperation1');
+const endingOperationHidden = document.getElementById('hddn_endoperation2');
 
 const operationrow0 = document.getElementById('operationrow0');
 const operationrow1 = document.getElementById('operationrow1');
@@ -18,36 +22,30 @@ const operationrow8 = document.getElementById('operationrow8');
 const operationrow9 = document.getElementById('operationrow9');
 const operationrow10 = document.getElementById('operationrow10');
 
-let endOp = 0;
+const operationTable = document.getElementById('operationheader');
+const compTable = document.getElementById('componentheader');
+const rows = compTable.getElementsByTagName('tr');
+const opRows = operationTable.getElementsByTagName('tr');
 
-if (operationrow10 != null) {
-    endOp = 11;
-} else if (operationrow9 != null) {
-    endOp = 10;
-} else if (operationrow8 != null) {
-    endOp = 9;
-} else if (operationrow7 != null) {
-    endOp = 8;
-} else if (operationrow6 != null) {
-    endOp = 7;
-} else if (operationrow5 != null) {
-    endOp = 6;
-} else if (operationrow4 != null) {
-    endOp = 5;
-} else if (operationrow3 != null) {
-    endOp = 4;
-} else if (operationrow2 != null) {
-    endOp = 3;
-} else if (operationrow1 != null) {
-    endOp = 2;
-} else if (operationrow0 != null) {
-    endOp = 1;
-}
+let endOp = opRows.length - 1;
+let netsuiteNumber = 17963256;
 
-//qtyToBuild.setAttribute('value', qty.innerHTML);
-//qtyToBuild.value = qty.innerHTML;
 completedQty.value = qty.innerHTML;
-//qtyInput.value = qty.innerHTML;
+startingOperation.title = 1;
 startingOperation.value = 1;
-
+endingOperation.title = endOp;
 endingOperation.value = endOp;
+
+startingOperationIndex.value = 1;
+endingOperationIndex.value = endOp;
+
+startingOperationHidden.value = netsuiteNumber;
+endingOperationHidden.value = netsuiteNumber + (endOp - 1);
+
+for (let i = 1; i < rows.length; i++) {
+    const currentRow = rows[i];
+    const cells = currentRow.getElementsByTagName('td');
+
+    const thirdColumnValue = cells[2].innerText;
+    cells[3].innerText = thirdColumnValue * qty.innerHTML;
+}
