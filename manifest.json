@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+
+  "name": "WOB Extension",
+  "version": "0.1.0",
+  "description": "Basic work order building tool",
+
+  "content_scripts": [
+    {
+      "css": [ "styles.css" ],
+      "js": [ "content.js" ],
+      "matches": [ "https://3381659.app.netsuite.com/app/accounting/transactions/workord.nl?id=*" ]
+    }
+  ]
+
+}
