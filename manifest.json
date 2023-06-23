@@ -2,7 +2,7 @@
   "manifest_version": 3,
 
   "name": "WOB Extension",
-  "version": "0.1.5",
+  "version": "0.8.5",
   "description": "Basic work order building tool",
 
   "content_scripts": [
